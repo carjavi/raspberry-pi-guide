@@ -373,14 +373,36 @@ https://www.digitalocean.com/community/tutorials/understanding-systemd-units-and
 
 <br>
 
-# Systemd Commands Summary
+# Systemd Commands Summary (administrador del sistema y servicios)
 ```
+$ systemctl status   //Show system status using  (General)
+$ systemctl  //List running units 
+$ systemctl –failed // List failed
+$ systemctl list-unit-files // List installed unit files
+# systemctl start unit //Start a unit immediately
+# systemctl stop unit //Stop a unit immediately
+# systemctl restart unit //Restart a unit
+# systemctl reload unit  //Ask a unit to reload its configuration
+$ systemctl status unit //Show the status of a unit
+# systemctl enable unit  //Enable a unit to be started on bootup
+# systemctl disable unit //Disable a unit to not start during bootup
+# systemctl mask unit  //Mask a unit to make it impossible to start it
+# systemctl unmask unit  // Unmask a unit
+# systemctl daemon-reload  //Reload systemd, scanning for new or changed units
+$ systemctl reboot  //Shut down and reboot the system
+$ systemctl poweroff   //Shut down and power-off the system
+$ systemctl hibernate  //Put the system into hibernation
+$ systemctl hybrid-sleep
+
+
+examples:
 sudo systemctl daemon-reload
 sudo systemctl enable systemd-networkd
 sudo systemctl disable clock.service
 sudo systemctl status clock.service
 sudo systemctl stop clock.service
 sudo systemctl start clock.service
+sudo systemctl restart <<service-name>>
 
 ```
 <br>
