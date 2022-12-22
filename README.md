@@ -49,6 +49,9 @@ e.g. eben@192.168.1.5
 ```
 Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is raspberry.
 
+# Habilitar SSH RPi en el arranque sin usar un Monitor
+Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque. En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
+
 # Copying Files to your Raspberry Pi
 ```
 scp myfile.txt pi@192.168.1.3:
@@ -449,8 +452,17 @@ $ sudo systemctl restart isc-dhcp-server.service
 
 
 
+# Poner hora en la RPi desde la consola
+```
+sudo date 08050822
+```
+donde: <br>
+08 es el mes<br>
+05 es el día<br>
+08 es la hora<br>
+22 son los minutos
 
-
+<br>
 
 
 ---
