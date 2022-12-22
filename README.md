@@ -79,7 +79,7 @@ pi:$6$/4.VdYgDm7RJ0qM1$FwXCeQgDKkqrOU3RIRuDSKpauAbBvP11msq9X58c8Que2l1Dwq3vdJMgi
 > :memo: **Note:** Puede usarse el comando ```sudo rename-user``` para cambiar el nombre de la cuenta «pi» a un nombre arbitrario
 
 ## 3. Configuración Wi-Fi 
-Agregandoun archivo de configuración ```wpa_supplicant.conf``` en la SD.
+Agregando un archivo de configuración ```wpa_supplicant.conf``` en la SD.
 
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -115,7 +115,7 @@ static ip_address=192.168.1.200/24
 static routers=192.168.1.1
 static domain_name_servers=192.168.1.1 8.8.8.8
 ```
-> :warning: **Warning:**  Si nada de lo anterior funciona, podéis intentar poner vuestro dispositivo en modo ‘Compartir Wifi’ y conectar la Raspberry Pi a él. Configuráis una IP estática y finalmente lo conectáis a la red definitiva.
+> :warning: **Warning:**  Si nada de lo anterior funciona, podéis intentar poner la RPi en modo ```Compartir Wifi```. Configurar una IP estática y finalmente lo conectar a la red definitiva.
 
 ## 5. Configurar el Resto de Opciones
 Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```rasp-config```.
