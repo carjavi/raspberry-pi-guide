@@ -6,6 +6,9 @@
 <img src="https://img.shields.io/badge/OS%20-Raspbian%20GNU%2FLinux%2011%20(bulleye)-yellowgreen">
 <img src="https://img.shields.io/badge/Hardware-Raspberry%20ver%203 & 4-red">
 
+<br>
+<br>
+
 # How to Find your IP Address
 test connection in the same net:
 ```
@@ -21,6 +24,7 @@ hostname -I
 ```
 ethtool -P eth0
 ```
+<br>
 
 # Enabling SSH
 
@@ -40,6 +44,8 @@ Alternatively you can enable it from the terminal using the raspi-config applica
 5. Select Ok
 6. Choose Finish
 
+<br>
+
 # SSH Shell desde Linux, Mac o Windows OS
 ```
 ssh pi@<IP>
@@ -47,10 +53,72 @@ ssh <USER>@<IP-ADDRESS>
 e.g. pi@192.168.1.10
 e.g. eben@192.168.1.5
 ```
-Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is raspberry.
+Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is raspberry. <br>
 
-# Habilitar SSH RPi en el arranque sin usar un Monitor
-Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque. En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
+
+<br>
+<br>
+
+# Acceder a RPI sin Monitor ni Mouse. Configuración “Headless”
+## 1. Habilitar SSH RPi en el arranque sin usar un Monitor
+Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque **BOOT**. En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
+
+si estamos en linux podemos crear el archivo
+```
+touch ssh
+```
+
+## 2. Crear Usuario Pi
+Como el usuario PI no existe en el primer arranque, para crearlo, habrá que crear un archivo de texto también en la raiz de BOOT llamado ```userconf``` con el usuario y el hash de la contraseña. Por ejemplo, el de pi por defecto y cambiarlo tras el primer login.
+```
+pi:$6$/4.VdYgDm7RJ0qM1$FwXCeQgDKkqrOU3RIRuDSKpauAbBvP11msq9X58c8Que2l1Dwq3vdJMgiZlQSbEXGaY5esVHGBNbCxKLVNqZW1
+```
+
+## 3. Configuración Wi-Fi 
+Agregandoun archivo de configuración ```wpa_supplicant.conf``` en la SD.
+
+```
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+country=ES
+
+network={
+        ssid="nombre-de-tu-wifi"
+        psk="password-de-tu-wifi"
+        key_mgmt=WPA-PSK
+}
+```
+
+## 4. Encontrar la dirección Raspberry Pi
+Podemos probar varias opciones:<br>
+- Intentar conectar usando ```raspberrypi.local``` como dirección.
+- Buscar la IP del dispositivo accediendo a la configuración del Router.
+- Usar un programa de escáner de IPs en la red como, por ejemplo, Nirsoft Wireless Network Watcher (Windows) o Fing (Android).
+
+💡 Tip: Desde el shell de Windows (funciona en redes pequeñas):
+```
+>tracert greenpeace.es
+```
+💡 Tip: Configurar IP estática en Raspberry Pi ---(aun no de si esto funciona)---
+Para configurar una IP estática en Raspian debemos editar el fichero /etc/dhcpcd.conf con el comando:
+```
+sudo nano /etc/dhcpcd.conf
+```
+Modificamos la interface (wlan0)
+```
+interface wlan0
+static ip_address=192.168.1.200/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1 8.8.8.8
+```
+> :warning: **Warning:**  Si nada de lo anterior funciona, podéis intentar poner vuestro dispositivo en modo ‘Compartir Wifi’ y conectar la Raspberry Pi a él. Configuráis una IP estática y finalmente lo conectáis a la red definitiva.
+
+## 5. Configurar el Resto de Opciones
+Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```rasp-config```.
+
+
+<br>
+<br>
 
 # Copying Files to your Raspberry Pi
 ```
