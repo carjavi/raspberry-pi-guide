@@ -7,7 +7,6 @@
 <img src="https://img.shields.io/badge/Hardware-Raspberry%20ver%203 & 4-red">
 
 <br>
-<br>
 
 # How to Find your IP Address
 test connection in the same net:
@@ -61,18 +60,23 @@ Next you will be prompted for the password for the pi login: the default passwor
 
 # Acceder a RPI sin Monitor ni Mouse. Configuración “Headless”
 ## 1. Habilitar SSH RPi en el arranque sin usar un Monitor
-Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque **BOOT**. En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
+Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque **BOOT** (FAT32) partition of the SD card (boot folder). En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
 
-si estamos en linux podemos crear el archivo
+Desde linux podemos crear el archivo
 ```
 touch ssh
 ```
 
-## 2. Crear Usuario Pi
-Como el usuario PI no existe en el primer arranque, para crearlo, habrá que crear un archivo de texto también en la raiz de BOOT llamado ```userconf``` con el usuario y el hash de la contraseña. Por ejemplo, el de pi por defecto y cambiarlo tras el primer login.
+## 2. Crear Usuario Pi --( puede que el usuario ya esta predeterminado)--
+Como el usuario PI no existe en el primer arranque, para crearlo, habrá que crear un archivo de texto también en la raiz de BOOT (FAT32) partition of the SD card (boot folder) llamado ```userconf``` (o userconf.txt) con el usuario y el hash de la contraseña. Por ejemplo, el de pi por defecto y cambiarlo tras el primer login. 
+
+El formato es ```login:password_hash```, para obtener el hash de contraseña, puede usar el comando ```echo ‘mypassword’ | openssl passwd -6 -stdin```
+
+ejemplo:
 ```
 pi:$6$/4.VdYgDm7RJ0qM1$FwXCeQgDKkqrOU3RIRuDSKpauAbBvP11msq9X58c8Que2l1Dwq3vdJMgiZlQSbEXGaY5esVHGBNbCxKLVNqZW1
 ```
+> :memo: **Note:** Puede usarse el comando ```sudo rename-user``` para cambiar el nombre de la cuenta «pi» a un nombre arbitrario
 
 ## 3. Configuración Wi-Fi 
 Agregandoun archivo de configuración ```wpa_supplicant.conf``` en la SD.
@@ -91,7 +95,7 @@ network={
 
 ## 4. Encontrar la dirección Raspberry Pi
 Podemos probar varias opciones:<br>
-- Intentar conectar usando ```raspberrypi.local``` como dirección.
+- Intentar conectar usando ```raspberrypi.local```. Probar con ```ping raspberrypi.local```.
 - Buscar la IP del dispositivo accediendo a la configuración del Router.
 - Usar un programa de escáner de IPs en la red como, por ejemplo, Nirsoft Wireless Network Watcher (Windows) o Fing (Android).
 
