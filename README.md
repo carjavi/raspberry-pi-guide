@@ -8,6 +8,20 @@
 
 <br>
 
+# Table of Contents
+
+* [How to Find your IP Address](#How-to-Find-your-IP-Address)
+* [Enabling SSH](#Enabling-SSH)
+* [SSH Shell desde Linux, Mac o Windows OS](#SSH-Shell-desde-Linux,-Mac-o-Windows-OS)
+* [Acceder a RPI sin Monitor ni Mouse en Windows. Configuración “Headless”](#Acceder-a-RPI-sin-Monitor-ni-Mouse-en-Windows.-Configuración-“Headless”)
+* [Copying Files to your Raspberry Pi from SSH](#Copying-Files-to-your-Raspberry-Pi-from-SSH)
+* [Run a Program On Your Raspberry Pi At Startup](#Run-a-Program-On-Your-Raspberry-Pi-At-Startup)
+* [Daemon Service (SYSTEMD)](#Daemon-Service-(SYSTEMD))
+* [DHCP Server](#DHCP-Server)
+* [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
+
+<br>
+
 # How to Find your IP Address
 test connection in the same net:
 ```
@@ -58,27 +72,23 @@ Next you will be prompted for the password for the pi login: the default passwor
 <br>
 <br>
 
-# Acceder a RPI sin Monitor ni Mouse. Configuración “Headless”
+# Acceder a RPI sin Monitor ni Mouse en Windows. Configuración “Headless”
 ## 1. Habilitar SSH RPi en el arranque sin usar un Monitor
 Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque **BOOT** (FAT32) partition of the SD card (boot folder). En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
 
-Desde linux podemos crear el archivo
+Desde la consola podemos crear el archivo
+Desde windows. Seleccionar la unidad BOOT de la SD en el explorador y seleccionar "Abrir en terminal".
+```
+type nul > ssh
+```
+Desde linux 
 ```
 touch ssh
 ```
 
-## 2. Crear Usuario Pi --( puede que el usuario ya esta predeterminado)--
-Como el usuario PI no existe en el primer arranque, para crearlo, habrá que crear un archivo de texto también en la raiz de BOOT (FAT32) partition of the SD card (boot folder) llamado ```userconf``` (o userconf.txt) con el usuario y el hash de la contraseña. Por ejemplo, el de pi por defecto y cambiarlo tras el primer login. 
+## 2. Configuración del acceso a la RPI
 
-El formato es ```login:password_hash```, para obtener el hash de contraseña, puede usar el comando ```echo ‘mypassword’ | openssl passwd -6 -stdin```
-
-ejemplo:
-```
-pi:$6$/4.VdYgDm7RJ0qM1$FwXCeQgDKkqrOU3RIRuDSKpauAbBvP11msq9X58c8Que2l1Dwq3vdJMgiZlQSbEXGaY5esVHGBNbCxKLVNqZW1
-```
-> :memo: **Note:** Puede usarse el comando ```sudo rename-user``` para cambiar el nombre de la cuenta «pi» a un nombre arbitrario
-
-## 3. Configuración Wi-Fi 
+## 2.1 Acceso por Wi-Fi (no se si desde particion boot)
 Agregando un archivo de configuración ```wpa_supplicant.conf``` en la SD.
 
 ```
@@ -92,12 +102,17 @@ network={
         key_mgmt=WPA-PSK
 }
 ```
+## 2.2 Acceso por Ethernet
+* Conectar a un Router para obtener una IP dinamico.
+* Configurar una IP estatica --(link)-- (no se si desde particion boot)
 
-## 4. Encontrar la dirección Raspberry Pi
+## 3. Encontrar la dirección Raspberry Pi
 Podemos probar varias opciones:<br>
 - Intentar conectar usando ```raspberrypi.local```. Probar con ```ping raspberrypi.local```.
 - Buscar la IP del dispositivo accediendo a la configuración del Router.
-- Usar un programa de escáner de IPs en la red como, por ejemplo, Nirsoft Wireless Network Watcher (Windows) o Fing (Android).
+- Usar un programa de escáner de IPs en la red como, por ejemplo:<br>
+**IP Scanner**: https://www.advanced-ip-scanner.com/es/ (Windows)<br>
+**Fing** (Android)
 
 💡 Tip: Desde el shell de Windows (funciona en redes pequeñas):
 ```
@@ -117,14 +132,14 @@ static domain_name_servers=192.168.1.1 8.8.8.8
 ```
 > :warning: **Warning:**  Si nada de lo anterior funciona, podéis intentar poner la RPi en modo ```Compartir Wifi```. Configurar una IP estática y finalmente lo conectar a la red definitiva.
 
-## 5. Configurar el Resto de Opciones
-Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```rasp-config```.
+## 4. Configurar el Resto de Opciones
+Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```rasp-config```. También es posible activar el **VNC server** en la RPI.
 
 
 <br>
 <br>
 
-# Copying Files to your Raspberry Pi
+# Copying Files to your Raspberry Pi from SSH
 ```
 scp myfile.txt pi@192.168.1.3:
 ```
@@ -132,12 +147,12 @@ Copy the file to the /home/pi/project/ directory on your Raspberry Pi (the proje
 ```
 scp myfile.txt pi@192.168.1.3:project/
 ```
-# Copying Files from your Raspberry Pi
+## Copying Files from your Raspberry Pi
 Copy the file myfile.txt from your Raspberry Pi to the current directory on your other computer:
 ```
 scp pi@192.168.1.3:myfile.txt .
 ```
-# Copying Multiple Files
+## Copying Multiple Files
 ```
 scp myfile.txt myfile2.txt pi@192.168.1.3:
 scp *.txt pi@192.168.1.3:
@@ -145,7 +160,7 @@ scp m* pi@192.168.1.3:
 scp m*.txt pi@192.168.1.3:
 ```
 
-# Copying a Whole Directory
+## Copying a Whole Directory
 Copy the directory project/ from your computer to the pi user’s home folder of your Raspberry Pi at the IP address 192.168.1.3
 ```
 scp -r project/ pi@192.168.1.3:
