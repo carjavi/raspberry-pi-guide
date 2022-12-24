@@ -88,7 +88,7 @@ touch ssh
 
 ## 2. Configuración del acceso a la RPI
 
-## 2.1 Acceso por Wi-Fi (no se si desde particion boot)
+### 2.1 Acceso por Wi-Fi (no se si desde particion boot)
 Agregando un archivo de configuración ```wpa_supplicant.conf``` en la SD.
 
 ```
@@ -102,7 +102,7 @@ network={
         key_mgmt=WPA-PSK
 }
 ```
-## 2.2 Acceso por Ethernet
+### 2.2 Acceso por Ethernet
 * Conectar a un Router para obtener una IP dinamico.
 * Configurar una IP estatica --(link)-- (no se si desde particion boot)
 
