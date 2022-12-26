@@ -10,13 +10,13 @@
 
 # Table of Contents
 * [Updating](#Updating)
-* [Raspberry Pi elimina la contraseña](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad.)
+* [Raspberry Pi elimina la contraseña por defecto](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad.)
 * [Headless Raspberry Pi SSH WiFi Setup](#Headless-Raspberry-Pi-SSH-WiFi-Setup)
 * [How to Find your IP Address](#How-to-Find-your-IP-Address)
 * [Enabling SSH](#Enabling-SSH)
 * [Habilitación y conexión a través de VNC](#Habilitación-y-conexión-a-través-de-VNC)
 * [SSH Shell desde Linux, Mac o Windows OS](#SSH-Shell-desde-Linux,-Mac-o-Windows-OS)
-* [xxxx](#xxxxxx)
+* [Encontrar la dirección Raspberry Pi](#Encontrar-la-dirección-Raspberry-Pi)
 * [Copying Files to your Raspberry Pi from SSH](#Copying-Files-to-your-Raspberry-Pi-from-SSH)
 * [Run a Program On Your Raspberry Pi At Startup](#Run-a-Program-On-Your-Raspberry-Pi-At-Startup)
 * [Daemon Service (SYSTEMD)](#Daemon-Service-(SYSTEMD))
@@ -102,8 +102,9 @@ Sin embargo, si está en una red Wi-Fi pública que requiere que haga clic en "A
 ## Habilitar SSH RPi en el arranque sin usar un Monitor
 Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque **BOOT** (FAT32) partition of the SD card (boot folder). En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
 
-Desde la consola podemos crear el archivo
-Desde windows. Seleccionar la unidad BOOT de la SD en el explorador y seleccionar "Abrir en terminal".
+Desde la consola podemos crear el archivo SSH. En la unidad BOOT de la SD.
+
+Desde Windows
 ```
 type nul > ssh
 ```
