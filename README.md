@@ -10,6 +10,7 @@
 
 # Table of Contents
 
+* [Raspberry Pi elimina la contraseña](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad.)
 * [How to Find your IP Address](#How-to-Find-your-IP-Address)
 * [Enabling SSH](#Enabling-SSH)
 * [SSH Shell desde Linux, Mac o Windows OS](#SSH-Shell-desde-Linux,-Mac-o-Windows-OS)
@@ -20,6 +21,11 @@
 * [DHCP Server](#DHCP-Server)
 * [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
 
+<br>
+
+# Raspberry Pi elimina la contraseña por defecto para máxima seguridad.
+## 08 de abril, 2022.
+Nuevas leyes 2022 prohíben que cualquier dispositivo conectado a Internet tenga credenciales de inicio de sesión predeterminadas. La última versión del sistema operativo Raspberry Pi elimina el nombre de usuario **pi** predeterminado y un nuevo asistente obliga al usuario a crear un nombre de usuario en el primer arranque de una imagen del sistema operativo Raspberry Pi recién flasheada, aunque son conscientes de posibles incompatibilidades sobre todo al comienzo del cambio.
 <br>
 
 # How to Find your IP Address
@@ -72,7 +78,8 @@ Next you will be prompted for the password for the pi login: the default passwor
 <br>
 <br>
 
-# Acceder a RPI sin Monitor ni Mouse en Windows. Configuración “Headless”
+# Acceder a RPI sin Monitor ni Mouse en Windows. Configuración “Headless”.
+
 ## 1. Habilitar SSH RPi en el arranque sin usar un Monitor
 Acceder a la tarjeta microSD en la que se instaló Raspbian desde un ordenador externo y crear un archivo llamado ```ssh``` en el directorio de arranque **BOOT** (FAT32) partition of the SD card (boot folder). En este caso, es importante que ```no utilices una extensión de archivo``` y que te asegures de que esta no se ha añadido automáticamente como sucede a menudo en Windows. Si reinicias la RPi, el acceso SSH estará habilitado.
 
