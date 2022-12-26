@@ -26,6 +26,8 @@
 # Raspberry Pi elimina la contraseña por defecto para máxima seguridad.
 ## 08 de abril, 2022.
 Nuevas leyes 2022 prohíben que cualquier dispositivo conectado a Internet tenga credenciales de inicio de sesión predeterminadas. La última versión del sistema operativo Raspberry Pi elimina el nombre de usuario **pi** predeterminado y un nuevo asistente obliga al usuario a crear un nombre de usuario en el primer arranque de una imagen del sistema operativo Raspberry Pi recién flasheada, aunque son conscientes de posibles incompatibilidades sobre todo al comienzo del cambio.
+
+Raspberry Pi todavía permitirá a los usuarios establecer el nombre de usuario en «pi» y la contraseña en **raspberry**, pero emitirá una advertencia de que elegir los valores predeterminados no es aconsejable.
 <br>
 
 # How to Find your IP Address
