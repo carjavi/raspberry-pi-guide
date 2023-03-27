@@ -22,7 +22,7 @@
 * [Daemon Service (SYSTEMD)](#Daemon-Service-(SYSTEMD))
 * [DHCP Server](#DHCP-Server)
 * [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
-
+* [Setting LCD on Raspberry](#Setting-LCD-on-Raspberry)
 <br>
 
 # Updating
@@ -127,7 +127,7 @@ Podemos probar varias opciones:<br>
 ```
 
 ## Configurar el Resto de Opciones
-Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```rasp-config```. También es posible activar el **VNC server** en la RPI.
+Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```raspi-config```. También es posible activar el **VNC server** en la RPI.
 
 <br>
 
@@ -627,7 +627,38 @@ donde: <br>
 
 <br>
 
+# Setting LCD Touch on Raspberry
+wiki: http://www.lcdwiki.com/3.5inch_HDMI_Display-B
 
+
+```
+sudo rm -rf LCD-show
+git clone https://github.com/goodtft/LCD-show.git
+chmod -R 755 LCD-show
+cd LCD-show/
+```
+
+###  Instalacion de driver para LCD 3.5" 480×320~1920×1080(dots)
+```
+sudo ./MPI3508-show // 3.5” HDMI Display-B(MPI3508)
+```
+### otras LCD 
+```
+sudo ./LCD35-show // 3.5” RPi Display(MPI3501)
+sudo ./LCD24-show // 2.4” RPi Display (MPI2401)
+sudo ./LCD24-3A+-show // 2.4” RPi Display For RPi 3A+ (MPI2411)
+sudo ./LCD28-show // 2.8” RPi Display (MPI2801)
+sudo ./LCD32-show // 3.2” RPi Display (MPI3201)
+```
+https://github.com/goodtft/LCD-show
+http://www.lcdwiki.com/3.5inch_HDMI_Display-B
+
+> :warning: **Warning:** si no funciona el touch puedes tener el driver equivocado.
+
+
+
+
+<br>
 ---
 Copyright &copy; 2022 [carjavi](https://github.com/carjavi). <br>
 ```www.instintodigital.net``` <br>
