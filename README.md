@@ -10,19 +10,19 @@
 
 # Table of Contents
 * [Updating](#Updating)
-* [Raspberry Pi elimina la contraseña por defecto](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad.)
+* [Raspberry Pi elimina la contraseña por defecto](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad)
 * [Headless Raspberry Pi SSH WiFi Setup](#Headless-Raspberry-Pi-SSH-WiFi-Setup)
 * [How to Find your IP Address](#How-to-Find-your-IP-Address)
-* [Enabling SSH](#Enabling-SSH)
+* [Enabling SSH](#Enabling-SSH-RPi)
 * [Habilitación y conexión a través de VNC](#Habilitación-y-conexión-a-través-de-VNC)
-* [SSH Shell desde Linux, Mac o Windows OS](#SSH-Shell-desde-Linux,-Mac-o-Windows-OS)
+* [SSH Shell desde Linux](#SSH-Shell-desde-Linux)
 * [Encontrar la dirección Raspberry Pi](#Encontrar-la-dirección-Raspberry-Pi)
 * [Copying Files to your Raspberry Pi from SSH](#Copying-Files-to-your-Raspberry-Pi-from-SSH)
 * [Run a Program On Your Raspberry Pi At Startup](#Run-a-Program-On-Your-Raspberry-Pi-At-Startup)
-* [Daemon Service (SYSTEMD)](#Daemon-Service-(SYSTEMD))
+* [Daemon Service SYSTEMD](#Daemon-Service-SYSTEMD)
 * [DHCP Server](#DHCP-Server)
 * [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
-* [Setting LCD on Raspberry](#Setting-LCD-on-Raspberry)
+* [Setting LCD Touch on Raspberry](#Setting-LCD-Touch-on-Raspberry)
 * [Visual Code On Raspberry](#Visual-Code-On-Raspberry)
 <br>
 
@@ -51,7 +51,7 @@ sudo reboot
 ```
 <br>
 
-# Raspberry Pi elimina la contraseña por defecto para máxima seguridad.
+# Raspberry Pi elimina la contraseña por defecto para máxima seguridad
 ## 08 de abril, 2022.
 Nuevas leyes 2022 prohíben que cualquier dispositivo conectado a Internet tenga credenciales de inicio de sesión predeterminadas. La última versión del sistema operativo Raspberry Pi elimina el nombre de usuario **pi** predeterminado y un nuevo asistente obliga al usuario a crear un nombre de usuario en el primer arranque de una imagen del sistema operativo Raspberry Pi recién flasheada, aunque son conscientes de posibles incompatibilidades sobre todo al comienzo del cambio.
 
@@ -59,7 +59,8 @@ Raspberry Pi todavía permitirá a los usuarios establecer el nombre de usuario 
 
 <br>
 
-# Headless Raspberry Pi SSH WiFi Setup (Acceder a RPI sin Monitor ni Mouse).
+# Headless Raspberry Pi SSH WiFi Setup 
+## Acceder a RPI sin Monitor ni Mouse
 
 from Raspberry Pi Imager (https://www.raspberrypi.com/software/) 
 
@@ -196,7 +197,8 @@ Alternatively you can enable it from the terminal using the raspi-config applica
 
 <br>
 
-# SSH Shell desde Linux, Mac o Windows OS
+# SSH Shell desde Linux
+## Mac o Windows OS
 ```
 ssh pi@<IP>
 ssh <USER>@<IP-ADDRESS> 
@@ -338,7 +340,7 @@ sudo reboot
 
 <br>
 
-# Daemon Service (SYSTEMD)
+# Daemon Service SYSTEMD
 
 systemd es el método preferido para iniciar aplicaciones al inicio, pero también es uno de los más complicados de usar. Con systemd, tiene la ventaja de poder decirle a Linux que inicie ciertos programas solo después de que se hayan iniciado ciertos servicios. Como resultado, es una herramienta muy robusta para inicializar sus scripts y aplicaciones.
 
