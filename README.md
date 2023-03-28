@@ -23,6 +23,7 @@
 * [DHCP Server](#DHCP-Server)
 * [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
 * [Setting LCD on Raspberry](#Setting-LCD-on-Raspberry)
+* [Visual Code On Raspberry](#Visual-Code-On-Raspberry)
 <br>
 
 # Updating
@@ -655,10 +656,20 @@ http://www.lcdwiki.com/3.5inch_HDMI_Display-B
 
 > :warning: **Warning:** si no funciona el touch puedes tener el driver equivocado.
 
+<br>
+
+# Visual Code On Raspberry
+
+Visual Code ver 1.55.0 amd64.deb
+
+<img  align="middle" width="32" height="32" src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/vcode.svg"> [visual-code-v1.55.0.deb](https://www.mediafire.com/file/r29ir46aun9ot81/visualcode_1.55.0-1617120720_amd64.deb/file)
+
+
 
 
 
 <br>
+
 ---
 Copyright &copy; 2022 [carjavi](https://github.com/carjavi). <br>
 ```www.instintodigital.net``` <br>
