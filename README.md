@@ -727,8 +727,8 @@ https://www.raspberrypi.com/software/operating-systems/
 # CM4 Dual Eth mini Board
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro.jpg" height="250" alt="www.instintodigital.net">
-    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro2.png" height="250" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro.jpg" height="280" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro2.png" height="280" alt="www.instintodigital.net">
     <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-size.jpg" height="270" alt="www.instintodigital.net">
 </p>
 
