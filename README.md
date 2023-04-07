@@ -16,7 +16,7 @@
 * [Enabling SSH](#Enabling-SSH-RPi)
 * [Habilitación y conexión a través de VNC](#Habilitación-y-conexión-a-través-de-VNC)
 * [SSH Shell desde Linux](#SSH-Shell-desde-Linux)
-* [Encontrar la dirección Raspberry Pi](#Encontrar-la-dirección-Raspberry-Pi)
+* [Encontrar la dirección IP Raspberry Pi](#Encontrar-la-dirección-IP-Raspberry-Pi)
 * [Copying Files to your Raspberry Pi from SSH](#Copying-Files-to-your-Raspberry-Pi-from-SSH)
 * [Run a Program On Your Raspberry Pi At Startup](#Run-a-Program-On-Your-Raspberry-Pi-At-Startup)
 * [Daemon Service SYSTEMD](#Daemon-Service-SYSTEMD)
@@ -24,6 +24,8 @@
 * [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
 * [Setting LCD Touch on Raspberry](#Setting-LCD-Touch-on-Raspberry)
 * [Visual Code On Raspberry](#Visual-Code-On-Raspberry)
+* [Raspberry Pi Compute Module 4 RPI CM4](#Raspberry-Pi-Compute-Module-4-RPI-CM4)
+* [Flashing RPi CM4 with eMMC on Windows](#Flashing-RPi-CM4-with-eMMC-on-Windows)
 <br>
 
 # Updating
@@ -60,7 +62,7 @@ Raspberry Pi todavía permitirá a los usuarios establecer el nombre de usuario 
 <br>
 
 # Headless Raspberry Pi SSH WiFi Setup 
-## Acceder a RPI sin Monitor ni Mouse
+## Firmware with SSH/VNC/Wi-Fi-SSID-PASSWORD/HOSTNAME from started.  Acceder a RPI sin  ni Mouse
 
 from Raspberry Pi Imager (https://www.raspberrypi.com/software/) 
 
@@ -115,23 +117,26 @@ Desde linux
 touch ssh
 ```
 
-## Encontrar la dirección Raspberry Pi
+## Configurar el Resto de Opciones
+Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```raspi-config```. También es posible activar el **VNC server** en la RPI.
+
+<br>
+
+## Encontrar la dirección IP Raspberry Pi
 Podemos probar varias opciones:<br>
 - Intentar conectar usando ```raspberrypi.local```. Probar con ```ping raspberrypi.local```.
 - Buscar la IP del dispositivo accediendo a la configuración del Router.
 - Usar un programa de escáner de IPs en la red como, por ejemplo:<br>
+**IP Scan**: https://www.mediafire.com/file/lzxseb45ej9mr97/ipscan.rar/file (Windows)<br>
 **IP Scanner**: https://www.advanced-ip-scanner.com/es/ (Windows)<br>
 **Fing** (Android)
 
 💡 Tip: Desde el shell de Windows (funciona en redes pequeñas):
 ```
->tracert greenpeace.es
+arp -a
 ```
+lista las IP activas. Solo se muestra las IP y no su Hostname
 
-## Configurar el Resto de Opciones
-Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de opciones de forma habitual usando ```raspi-config```. También es posible activar el **VNC server** en la RPI.
-
-<br>
 
 ## Conexión Ethernet directa
 Solo asegúrate de tener Bonjour instalado en su PC y SSH habilitado en el Pi (ver arriba). Luego, puede simplemente conectar los dos dispositivos a través de Ethernet.
@@ -176,6 +181,7 @@ hostname -I
 ethtool -P eth0
 ```
 <br>
+
 
 # Enabling SSH RPi
 
@@ -666,9 +672,57 @@ Visual Code ver 1.55.0 amd64.deb
 
 <img  align="middle" width="32" height="32" src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/vcode.svg"> [visual-code-v1.55.0.deb](https://www.mediafire.com/file/r29ir46aun9ot81/visualcode_1.55.0-1617120720_amd64.deb/file)
 
+<br>
 
+# Raspberry Pi Compute Module 4 RPI CM4
 
+<p align="center">
+    <a href="https://instintodigital.net/" target="_blank"><img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/132984509.webp" height="100" alt="www.instintodigital.net"></a>
+</p>
 
+# Flashing RPi CM4 with eMMC on Windows 
+
+> :warning: **Warning:** No funciona para RPi CM4 lite (no posee el eMMC), tiene otro procedimiento.
+no se necesita una SD-ext en la placa base (se usa el eMMC).
+
+## Pasos
+
+1. Ponemos el swich Boot en On para que arranque desde USB (debe ser un OTG cable) 
+2. Conectamos al PC (en Control Panel/System/Device encontraremos un dispositivo BCM2711 Boot)
+3. Correr [rpiboot.exe](https://www.mediafire.com/file/bo6gg4sxd9rkk95/Rpiboot_setup.zip/file) como administrator (esto flashea la eMMC del modulo)
+4. Se abre el [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
+	* Seleccionar Storage: eMMC RPi-MSD-0001 - 31.3GB
+	* Choose OS/Erase FAT32 
+	* Habilitamos SSH, SSID-PASSWORD, VNC
+	* Escribimos OS
+5. Al terminar de instalar OS cerramos RaspberryPi-Imager y quitamos cable USB
+6. Pasamos el swith BOOT a off (para que inicie desde la eMMC) 
+7. Ready!
+8. Update & Upgrade
+
+```
+sudo apt-get update && sudo apt-get dist-upgrade -y
+```
+
+> :memo: **Note:** 
+l USB Port esta desabilitado por default para ahorrar energia. para habilitarlo
+se edita el config.txt y agregar:
+```
+  dtoverlay=dwc2,dr_mode=host
+```
+
+## Referencias:
+Documentation
+https://www.raspberrypi.com/documentation/computers/compute-module.html
+
+wiki
+https://www.waveshare.com/wiki/CM4-DUAL-ETH-MINI
+
+flashing RPi CM4
+https://www.waveshare.com/wiki/Write_Image_for_Compute_Module_Boards_eMMC_version
+
+imagen firmware
+https://www.raspberrypi.com/software/operating-systems/
 
 <br>
 
