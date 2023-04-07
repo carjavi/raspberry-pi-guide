@@ -699,8 +699,10 @@ hdmi_cvt 800 480 60 6 0 0
 2. Save & reboot
 
 
-### Resource
-http://www.lcdwiki.com/7inch_HDMI_Display-B
+> :memo: **Note:** Si no hay video verificar que el swith de backlight en la parte trasera este en ON.
+
+#### Resource
+http://www.lcdwiki.com/7inch_HDMI_Display-B<br>
 http://www.lcdwiki.com/res/MPI7001/7inch_HDMI_Display-B_User_Manual(En).pdf
 
 <br>
