@@ -650,9 +650,26 @@ cd LCD-show/
 ```
 
 ###  Instalacion de driver para LCD 3.5" 480×320~1920×1080(dots)
+<p align="center">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-3-inch.jpg" height="300" alt="www.instintodigital.net">
+   
+</p>
+
 ```
 sudo ./MPI3508-show // 3.5” HDMI Display-B(MPI3508)
 ```
+
+###  Instalacion de driver para LCD 7" 
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-7-inch-model-f.png" height="300" alt="www.instintodigital.net"><br>
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-7-inch-model-b.png" height="270" alt="www.instintodigital.net">
+   
+</p>
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxx
+
 ### otras LCD 
 ```
 sudo ./LCD35-show // 3.5” RPi Display(MPI3501)
