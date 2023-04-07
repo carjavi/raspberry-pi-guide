@@ -682,11 +682,11 @@ http://www.lcdwiki.com/3.5inch_HDMI_Display-B
 </p>
 
 ### Setting
-1. Editing file ```config.txt```
+1. Edit  ```config.txt``` file
 ```
 sudo nano /boot/config.txt
 ```
-add the following code at the end of the file
+add the following code at the end of the file:
 ```
 max_usb_current=1
 hdmi_force_hotplug=1
