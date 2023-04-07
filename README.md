@@ -12,6 +12,7 @@
 * [Updating](#Updating)
 * [Raspberry Pi elimina la contraseña por defecto](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad)
 * [Headless Raspberry Pi SSH WiFi Setup](#Headless-Raspberry-Pi-SSH-WiFi-Setup)
+* [Otras Opciones](#Otras-Opciones)
 * [How to Find your IP Address](#How-to-Find-your-IP-Address)
 * [Enabling SSH](#Enabling-SSH-RPi)
 * [Habilitación y conexión a través de VNC](#Habilitación-y-conexión-a-través-de-VNC)
@@ -727,8 +728,8 @@ https://www.raspberrypi.com/software/operating-systems/
 # CM4 Dual Eth mini Board
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro.jpg" height="280" alt="www.instintodigital.net">
-    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro2.png" height="280" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro.jpg" height="300" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro2.png" height="300" alt="www.instintodigital.net">
     <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-size.jpg" height="270" alt="www.instintodigital.net">
 </p>
 
