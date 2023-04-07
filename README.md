@@ -26,6 +26,7 @@
 * [Visual Code On Raspberry](#Visual-Code-On-Raspberry)
 * [Raspberry Pi Compute Module 4 RPI CM4](#Raspberry-Pi-Compute-Module-4-RPI-CM4)
 * [Flashing RPi CM4 with eMMC on Windows](#Flashing-RPi-CM4-with-eMMC-on-Windows)
+* [CM4 Dual Eth mini Board](#CM4-Dual-Eth-mini-Board)
 <br>
 
 # Updating
@@ -677,7 +678,8 @@ Visual Code ver 1.55.0 amd64.deb
 # Raspberry Pi Compute Module 4 RPI CM4
 
 <p align="center">
-    <a href="https://instintodigital.net/" target="_blank"><img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/132984509.webp" height="100" alt="www.instintodigital.net"></a>
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/132984509.webp" height="200" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-Component-Identification-1.png" height="300" alt="www.instintodigital.net">
 </p>
 
 # Flashing RPi CM4 with eMMC on Windows 
@@ -715,14 +717,23 @@ se edita el config.txt y agregar:
 Documentation
 https://www.raspberrypi.com/documentation/computers/compute-module.html
 
-wiki
-https://www.waveshare.com/wiki/CM4-DUAL-ETH-MINI
-
 flashing RPi CM4
 https://www.waveshare.com/wiki/Write_Image_for_Compute_Module_Boards_eMMC_version
 
 imagen firmware
 https://www.raspberrypi.com/software/operating-systems/
+
+
+# CM4 Dual Eth mini Board
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro.jpg" height="250" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-intro2.png" height="250" alt="www.instintodigital.net">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/CM4-DUAL-ETH-MINI-details-size.jpg" height="270" alt="www.instintodigital.net">
+</p>
+
+wiki
+https://www.waveshare.com/wiki/CM4-DUAL-ETH-MINI
 
 <br>
 
