@@ -641,6 +641,7 @@ donde: <br>
 # Setting LCD Touch on Raspberry
 wiki: http://www.lcdwiki.com/3.5inch_HDMI_Display-B
 
+## Setting
 
 ```
 sudo rm -rf LCD-show
@@ -649,7 +650,7 @@ chmod -R 755 LCD-show
 cd LCD-show/
 ```
 
-###  Instalacion de driver para LCD 3.5" 480×320~1920×1080(dots)
+##  Instalacion de driver para LCD 3.5" 480×320 ~ 1920×1080(dots)
 <p align="center">
     <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-3-inch.jpg" height="300" alt="www.instintodigital.net">
    
@@ -658,17 +659,6 @@ cd LCD-show/
 ```
 sudo ./MPI3508-show // 3.5” HDMI Display-B(MPI3508)
 ```
-
-###  Instalacion de driver para LCD 7" 
-
-<p align="center">
-    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-7-inch-model-f.png" height="300" alt="www.instintodigital.net"><br>
-    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-7-inch-model-b.png" height="270" alt="www.instintodigital.net">
-   
-</p>
-
-
-xxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### otras LCD 
 ```
@@ -682,6 +672,36 @@ https://github.com/goodtft/LCD-show
 http://www.lcdwiki.com/3.5inch_HDMI_Display-B
 
 > :warning: **Warning:** si no funciona el touch puedes tener el driver equivocado.
+
+##  Instalacion de driver para LCD 7" 800 × 480 ~ 1920x1080
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-7-inch-model-f.png" height="300" alt="www.instintodigital.net"><br>
+    <img src="https://raw.githubusercontent.com/carjavi/raspberry-pi-guide/master/img/RPI-7-inch-model-b.png" height="360" alt="www.instintodigital.net">
+   
+</p>
+
+### Setting
+1. Editing file ```config.txt```
+```
+sudo nano /boot/config.txt
+```
+add the following code at the end of the file
+```
+max_usb_current=1
+hdmi_force_hotplug=1
+config_hdmi_boost=7
+hdmi_group=2
+hdmi_mode=87
+hdmi_drive=1
+hdmi_cvt 800 480 60 6 0 0 
+```
+2. Save & reboot
+
+
+### Resource
+http://www.lcdwiki.com/7inch_HDMI_Display-B
+http://www.lcdwiki.com/res/MPI7001/7inch_HDMI_Display-B_User_Manual(En).pdf
 
 <br>
 
@@ -723,10 +743,15 @@ no se necesita una SD-ext en la placa base (se usa el eMMC).
 ```
 sudo apt-get update && sudo apt-get dist-upgrade -y
 ```
+<br>
 
 > :memo: **Note:** 
 l USB Port esta desabilitado por default para ahorrar energia. para habilitarlo
 se edita el config.txt y agregar:
+```
+sudo nano /boot/config.txt
+```
+add the following code at the end of the file
 ```
   dtoverlay=dwc2,dr_mode=host
 ```
