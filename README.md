@@ -18,6 +18,8 @@
 * [Habilitación y conexión a través de VNC](#Habilitación-y-conexión-a-través-de-VNC)
 * [SSH Shell desde Linux](#SSH-Shell-desde-Linux)
 * [Encontrar la dirección IP Raspberry Pi](#Encontrar-la-dirección-IP-Raspberry-Pi)
+* [Setup a Static IP Address](#Setup-a-Static-IP-Address)
+* 
 * [Copying Files to your Raspberry Pi from SSH](#Copying-Files-to-your-Raspberry-Pi-from-SSH)
 * [Run a Program On Your Raspberry Pi At Startup](#Run-a-Program-On-Your-Raspberry-Pi-At-Startup)
 * [Daemon Service SYSTEMD](#Daemon-Service-SYSTEMD)
@@ -127,10 +129,11 @@ Una vez que tenemos acceso SSH a Raspberry Pi ya podemos configurar el resto de 
 ## Encontrar la dirección IP Raspberry Pi
 Podemos probar varias opciones:<br>
 - Intentar conectar usando ```raspberrypi.local```. Probar con ```ping raspberrypi.local```.
+- **IP Scanner**: https://www.advanced-ip-scanner.com/es/ (Windows) ```-Mejor Opción-```<br>
 - Buscar la IP del dispositivo accediendo a la configuración del Router.
 - Usar un programa de escáner de IPs en la red como, por ejemplo:<br>
 **IP Scan**: https://www.mediafire.com/file/lzxseb45ej9mr97/ipscan.rar/file (Windows)<br>
-**IP Scanner**: https://www.advanced-ip-scanner.com/es/ (Windows)<br>
+
 **Fing** (Android)
 
 💡 Tip: Desde el shell de Windows (funciona en redes pequeñas):
@@ -214,6 +217,40 @@ e.g. pi@192.168.1.10
 e.g. eben@192.168.1.5
 ```
 Next you will be prompted for the password for the pi login: the default password on Raspberry Pi OS is raspberry. 
+
+<br>
+
+# Setup a Static IP Address
+## dhcpcd method
+
+Se un cable de red punto a punto a la RPI, sirve para configurar la RPI con SSID y PSK cuando no hay monitor ni teclado por ejemplo.
+
+> :bulb: **Tip:** hay acceso a internet desde la ip ```Ethernet``` y si desde la ip ```WiFi``` siempre que este configurada la red Wifi. Sino hay que reload el adaptador de red.
+
+Here is an example which configures a static address, routes and dns.
+```
+sudo nano /etc/dhcpcd.conf
+```
+```
+# carjavi static IP configuration:
+interface eth0
+static ip_address=192.168.2.2/24
+#static ip6_address=fd51:42f8:caae:d92e::ff/64
+static routers=192.168.2.0
+static domain_name_servers=192.168.2.0 8.8.8.8 
+```
+
+> :warning: **Warning:** para conectarse a la RPI desde el computador primero se debe poner el computador en la misma red.
+
+## Configuración de la red
+
+<p align="center"><img src="./img/ip-static_1.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/ip-static_2.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/ip-static_3.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/ip-static_4.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/ip-static_5.png" height="350" alt=" " /></p>
+
+
 
 <br>
 
