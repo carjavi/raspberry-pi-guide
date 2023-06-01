@@ -271,6 +271,7 @@ network={
 network={
     ssid="MQT"
     psk="password"
+    key_mgmt=WPA-PSK
     id_str="work"
     priority=2
 }
