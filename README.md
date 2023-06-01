@@ -223,7 +223,7 @@ Next you will be prompted for the password for the pi login: the default passwor
 # Setup a Static IP Address
 ## dhcpcd method
 
-Se un cable de red punto a punto a la RPI, sirve para configurar la RPI con SSID y PSK cuando no hay monitor ni teclado por ejemplo.
+Se usa un cable de red punto a punto a la RPI, sirve para configurar la SSID y PSK en la RPI cuando no hay monitor ni teclado por ejemplo.
 
 > :bulb: **Tip:** hay acceso a internet desde la ip ```Ethernet``` y si desde la ip ```WiFi``` siempre que este configurada la red Wifi. Sino hay que reload el adaptador de red.
 
@@ -250,7 +250,44 @@ static domain_name_servers=192.168.2.0 8.8.8.8
 <p align="center"><img src="./img/ip-static_4.png" height="350" alt=" " /></p>
 <p align="center"><img src="./img/ip-static_5.png" height="350" alt=" " /></p>
 
+<br>
 
+# Adding Multiple Wireless Network Configurations
+
+Sample:
+
+```
+country=CL
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+        ssid="carjavi"
+        psk=d0611293f3e612439a6db28f18d59333e2274117902a95e85503bc2b2a8f895a
+        id_str="main"
+        priority=1
+}
+
+network={
+   	    ssid="MQT"
+    	psk="password"
+   	    id_str="work"
+    	priority=2
+}
+```
+
+```country=CL```  Donde el código de país debe establecerse el código de dos letras ISO/IEC alpha2 para el país en el que está utilizando.
+
+```priority=<numero>``` A mayor valor de la prioridad se conectará primero a esa red wifi antes que a otra con menor valor.
+
+```id_str="<nombre>"``` Esta cadena se utiliza en ```/etc/network/interfaces``` como identificador de interfaz virtual. Esto permite crear bloques de configuración específicos para cada red.
+
+## Otros parametros
+```key_mgmt=WPA-PSK```  list of accepted authenticated key management protocols.
+```scan_ssid=1``` SSID scan technique; 0 (default) or 1.
+```ap_scan=1```
+```pairwise=CCMP```
+```auth_alg=OPEN```
 
 <br>
 
@@ -794,6 +831,7 @@ add the following code at the end of the file
 ```
   dtoverlay=dwc2,dr_mode=host
 ```
+> :memo: **Note:** Solo esta habilitado un solo puerto Ethernet por default, el Eth port de la esquina. 
 
 ## Referencias:
 Documentation
