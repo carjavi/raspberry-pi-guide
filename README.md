@@ -913,6 +913,24 @@ revisar también la forma en que abre el navegador:
 chromium-browser --start-fullscreen
 on chromium you can use --start-fullscreen (like F11)
 ```
+# Start chromium browser from the terminal
+start a webpage, fullscreen (in Kiosk mode) it work when you specify the desktop variable 
+```
+DISPLAY=:0 chromium-browser --kiosk --app=localhost:8080
+
+DISPLAY=:0 chromium-browser --app=https://your.website —kiosk &
+
+DISPLAY=:0 chromium-browser -kiosk
+```
+inicia una versión de pantalla completa de Chrome sin mostrar ninguna de las opciones o barras de marcadores. La única forma de salir de la ventana es ```Alt+Tab``` out o ```Alt+F4```para cerrar la ventana por completo.
+
+```
+DISPLAY=:0 chromium-browser -start-maximized
+```
+```
+start chrome %192.168.100.19:8080%
+chromium-browser %192.168.100.19:8080%
+```
 
 
 <br>
