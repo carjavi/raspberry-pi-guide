@@ -878,9 +878,12 @@ y agregamos:
 con esos comandos deshabilitamos las características DPMS (Energy Star) y evitamos el salvapantalla. Evita 
 evita el apagado automatico de la pantalla.
 
+para verificar la configuracion DPMS:
 ```
-xset q // para verificar la configuracion DPMS
-Otros commandos desde la consola
+xset q 
+```
+Otros commandos desde la consola:
+```
 xset s off
 xset -dpms
 xset s noblank
