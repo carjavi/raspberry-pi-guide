@@ -30,6 +30,8 @@
 * [Raspberry Pi Compute Module 4 RPI CM4](#Raspberry-Pi-Compute-Module-4-RPI-CM4)
 * [Flashing RPi CM4 with eMMC on Windows](#Flashing-RPi-CM4-with-eMMC-on-Windows)
 * [CM4 Dual Eth mini Board](#CM4-Dual-Eth-mini-Board)
+* [Desactivar Screen Saver Raspbian](#Desactivar-Screen-Saver-Raspbian)
+* [Abrir el browser al iniciar raspberry](#Abrir-el-browser-al-iniciar-raspberry)
 <br>
 
 # Updating
@@ -855,6 +857,60 @@ https://www.raspberrypi.com/software/operating-systems/
 
 wiki
 https://www.waveshare.com/wiki/CM4-DUAL-ETH-MINI
+
+<br>
+
+# Desactivar Screen Saver Raspbian
+```
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+```
+Alli, debemos comentar la linea:
+```
+#@xscreensaver -no-splash
+```
+
+y agregamos:
+```
+@xset dpms 0 0 0          #Standby: 0   Suspend:0    Off:0
+@xset s off -dpms		  #Desabilita el DPMS
+```
+
+con esos comandos deshabilitamos las características DPMS (Energy Star) y evitamos el salvapantalla. Evita 
+evita el apagado automatico de la pantalla.
+
+```
+xset q // para verificar la configuracion DPMS
+Otros commandos desde la consola
+xset s off
+xset -dpms
+xset s noblank
+```
+
+# Abrir el browser al iniciar raspberry
+Edit this file
+```
+sudo nano /etc/xdg/lxsession/LXDE-pi/autostart
+```
+And add this:
+```
+@xset s off
+@xset -dpms
+@xset s noblank
+@chromium-browser --kiosk http://google.com/
+```
+
+> :bulb: **Tip:** You can also add this line if you want the mouse to disappear:
+```
+@unclutter -idle 0.1 -root
+```
+requires ```sudo apt-get install unclutter```
+
+revisar también la forma en que abre el navegador:
+```
+chromium-browser --start-fullscreen
+on chromium you can use --start-fullscreen (like F11)
+```
+
 
 <br>
 
