@@ -227,6 +227,22 @@ Next you will be prompted for the password for the pi login: the default passwor
 <br>
 
 # Setup a Static IP Address
+
+If the reason you are contemplating a Static IP Address is you want your Pi to be assigned a predictable IP Address you can request the DHCP server to assign one.
+E.g. Adding the following to ```/etc/dhcpcd.conf``` will request an address on wlan0 and on eth0.
+
+```
+interface wlan0
+request 10.1.2.99
+
+interface eth0
+request 10.1.2.98
+```
+
+If you request an IP Address within the range managed by the DHCP server which is available this should be honoured, otherwise the DHCP server will allocate an address as normal.
+
+If you want an IP Address outside the range managed by the DHCP server e.g. if you have a range of addresses reserved use the inform directive.
+
 ## dhcpcd method
 
 Se usa un cable de red punto a punto a la RPI, sirve para configurar la SSID y PSK en la RPI cuando no hay monitor ni teclado por ejemplo.
@@ -247,6 +263,8 @@ static domain_name_servers=192.168.2.0 8.8.8.8
 ```
 
 > :warning: **Warning:** para conectarse a la RPI desde el computador primero se debe poner el computador en la misma red.
+
+info: https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address-on-raspbian-raspberry-pi-os/74428#74428
 
 ## Configuración de la red
 
