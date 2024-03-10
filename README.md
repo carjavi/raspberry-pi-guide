@@ -77,6 +77,7 @@
 - [Start chromium browser from the terminal](#start-chromium-browser-from-the-terminal)
 - [Scan Serial Port](#scan-serial-port)
 - [Scan port USB](#scan-port-usb)
+- [Error puerto](#error-puerto)
   
 <br>
 
@@ -1013,6 +1014,10 @@ ls /dev/tty*
 ```
 ls /dev/*USB*
 ```
+
+# Error puerto
+https://devicetests.com/fix-permission-denied-error-xubuntu-serial-port <br>
+https://serialport.io/docs/api-serialport
 
 <br>
 
