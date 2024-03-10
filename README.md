@@ -9,29 +9,74 @@
 <br>
 
 # Table of Contents
-* [Updating](#Updating)
-* [Raspberry Pi elimina la contraseña por defecto](#Raspberry-Pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad)
-* [Headless Raspberry Pi SSH WiFi Setup](#Headless-Raspberry-Pi-SSH-WiFi-Setup)
-* [Otras Opciones](#Otras-Opciones)
-* [How to Find your IP Address](#How-to-Find-your-IP-Address)
-* [Enabling SSH](#Enabling-SSH-RPi)
-* [Habilitación y conexión a través de VNC](#Habilitación-y-conexión-a-través-de-VNC)
-* [SSH Shell desde Linux](#SSH-Shell-desde-Linux)
-* [Encontrar la dirección IP Raspberry Pi](#Encontrar-la-dirección-IP-Raspberry-Pi)
-* [Setup a Static IP Address](#Setup-a-Static-IP-Address)
-* [Adding Multiple Wireless Network Configurations](#Adding-Multiple-Wireless-Network-Configurations)
-* [Copying Files to your Raspberry Pi from SSH](#Copying-Files-to-your-Raspberry-Pi-from-SSH)
-* [Run a Program On Your Raspberry Pi At Startup](#Run-a-Program-On-Your-Raspberry-Pi-At-Startup)
-* [Daemon Service SYSTEMD](#Daemon-Service-SYSTEMD)
-* [DHCP Server](#DHCP-Server)
-* [Poner hora en la RPi desde la consola](#Poner-hora-en-la-RPi-desde-la-consola)
-* [Setting LCD Touch on Raspberry](#Setting-LCD-Touch-on-Raspberry)
-* [Visual Code On Raspberry](#Visual-Code-On-Raspberry)
-* [Raspberry Pi Compute Module 4 RPI CM4](#Raspberry-Pi-Compute-Module-4-RPI-CM4)
-* [Flashing RPi CM4 with eMMC on Windows](#Flashing-RPi-CM4-with-eMMC-on-Windows)
-* [CM4 Dual Eth mini Board](#CM4-Dual-Eth-mini-Board)
-* [Desactivar Screen Saver Raspbian](#Desactivar-Screen-Saver-Raspbian)
-* [Abrir el browser al iniciar raspberry](#Abrir-el-browser-al-iniciar-raspberry)
+- [Table of Contents](#table-of-contents)
+- [Updating](#updating)
+- [Raspberry Pi elimina la contraseña por defecto para máxima seguridad](#raspberry-pi-elimina-la-contraseña-por-defecto-para-máxima-seguridad)
+  - [08 de abril, 2022.](#08-de-abril-2022)
+- [Headless Raspberry Pi SSH WiFi Setup](#headless-raspberry-pi-ssh-wifi-setup)
+  - [Firmware with SSH/VNC/Wi-Fi-SSID-PASSWORD/HOSTNAME from started.  Acceder a RPI sin  ni Mouse](#firmware-with-sshvncwi-fi-ssid-passwordhostname-from-started--acceder-a-rpi-sin--ni-mouse)
+  - [Otras Opciones](#otras-opciones)
+  - [Editing Wi-Fi on a Prewritten Card](#editing-wi-fi-on-a-prewritten-card)
+  - [Habilitar SSH RPi en el arranque sin usar un Monitor](#habilitar-ssh-rpi-en-el-arranque-sin-usar-un-monitor)
+  - [Configurar el Resto de Opciones](#configurar-el-resto-de-opciones)
+  - [Encontrar la dirección IP Raspberry Pi](#encontrar-la-dirección-ip-raspberry-pi)
+  - [Conexión Ethernet directa](#conexión-ethernet-directa)
+  - [Conexión USB directa (solo Pi Zero / Zero W)](#conexión-usb-directa-solo-pi-zero--zero-w)
+- [How to Find your IP Address](#how-to-find-your-ip-address)
+- [IP Address Local](#ip-address-local)
+- [Ethernet MAC address](#ethernet-mac-address)
+- [Enabling SSH RPi](#enabling-ssh-rpi)
+- [SSH Shell desde Linux](#ssh-shell-desde-linux)
+  - [Mac o Windows OS](#mac-o-windows-os)
+- [Setup a Static IP Address](#setup-a-static-ip-address)
+  - [dhcpcd method](#dhcpcd-method)
+  - [Configuración de la red](#configuración-de-la-red)
+- [Adding Multiple Wireless Network Configurations](#adding-multiple-wireless-network-configurations)
+  - [Otros parametros](#otros-parametros)
+- [Copying Files to your Raspberry Pi from SSH](#copying-files-to-your-raspberry-pi-from-ssh)
+  - [Copying Files from your Raspberry Pi](#copying-files-from-your-raspberry-pi)
+  - [Copying Multiple Files](#copying-multiple-files)
+  - [Copying a Whole Directory](#copying-a-whole-directory)
+- [Habilitación y conexión a través de VNC](#habilitación-y-conexión-a-través-de-vnc)
+- [Run a Program On Your Raspberry Pi At Startup](#run-a-program-on-your-raspberry-pi-at-startup)
+  - [**(rc.local)**](#rclocal)
+    - [Debugging](#debugging)
+    - [Cómo detener su programa](#cómo-detener-su-programa)
+  - [**.bashrc**](#bashrc)
+  - [**(init.d)**](#initd)
+- [Daemon Service SYSTEMD](#daemon-service-systemd)
+    - [Unit File (No GUI)](#unit-file-no-gui)
+  - [Unit File (GUI)](#unit-file-gui)
+  - [Troubleshooting](#troubleshooting)
+  - [Debugging](#debugging-1)
+  - [Logging to a File](#logging-to-a-file)
+  - [Use a Specific Version of Python](#use-a-specific-version-of-python)
+  - [Checking the Service](#checking-the-service)
+  - [Starting and Stopping the Service](#starting-and-stopping-the-service)
+  - [How to Stop Your Program from Running on Boot](#how-to-stop-your-program-from-running-on-boot)
+  - [Sample: Create A Unit File](#sample-create-a-unit-file)
+  - [Configure systemd](#configure-systemd)
+- [Systemd Commands Summary (administrador del sistema y servicios)](#systemd-commands-summary-administrador-del-sistema-y-servicios)
+- [DHCP Server](#dhcp-server)
+- [Poner hora en la RPi desde la consola](#poner-hora-en-la-rpi-desde-la-consola)
+- [Setting LCD Touch on Raspberry](#setting-lcd-touch-on-raspberry)
+  - [Setting](#setting)
+  - [Instalacion de driver para LCD 3.5" 480×320 ~ 1920×1080(dots)](#instalacion-de-driver-para-lcd-35-480320--19201080dots)
+    - [otras LCD](#otras-lcd)
+  - [Instalacion de driver para LCD 7" 800 × 480 ~ 1920x1080](#instalacion-de-driver-para-lcd-7-800--480--1920x1080)
+    - [Setting](#setting-1)
+      - [Resource](#resource)
+- [Visual Code On Raspberry](#visual-code-on-raspberry)
+- [Raspberry Pi Compute Module 4 RPI CM4](#raspberry-pi-compute-module-4-rpi-cm4)
+- [Flashing RPi CM4 with eMMC on Windows](#flashing-rpi-cm4-with-emmc-on-windows)
+  - [Pasos](#pasos)
+  - [Referencias:](#referencias)
+- [CM4 Dual Eth mini Board](#cm4-dual-eth-mini-board)
+- [Desactivar Screen Saver Raspbian](#desactivar-screen-saver-raspbian)
+- [Abrir el browser al iniciar raspberry](#abrir-el-browser-al-iniciar-raspberry)
+- [Start chromium browser from the terminal](#start-chromium-browser-from-the-terminal)
+- [Scan Serial Port](#scan-serial-port)
+  
 <br>
 
 more: https://www.raspberrypi.com/documentation/computers/configuration.html#conclusion
@@ -953,7 +998,14 @@ DISPLAY=:0 chromium-browser -start-maximized
 start chrome %192.168.100.19:8080%
 chromium-browser %192.168.100.19:8080%
 ```
+<br>
 
+# Scan Serial Port
+ 
+```
+ dmesg | grep tty
+ 
+```
 
 <br>
 
