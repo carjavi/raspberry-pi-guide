@@ -34,6 +34,10 @@
 * [Abrir el browser al iniciar raspberry](#Abrir-el-browser-al-iniciar-raspberry)
 <br>
 
+more: https://www.raspberrypi.com/documentation/computers/configuration.html#conclusion
+
+<br>
+
 # Updating
 
 ```
