@@ -76,6 +76,7 @@
 - [Abrir el browser al iniciar raspberry](#abrir-el-browser-al-iniciar-raspberry)
 - [Start chromium browser from the terminal](#start-chromium-browser-from-the-terminal)
 - [Scan Serial Port](#scan-serial-port)
+- [Scan port USB](#scan-port-usb)
   
 <br>
 
@@ -1001,10 +1002,16 @@ chromium-browser %192.168.100.19:8080%
 <br>
 
 # Scan Serial Port
- 
 ```
  dmesg | grep tty
- 
+```
+```
+ls /dev/tty*
+```
+
+# Scan port USB
+```
+ls /dev/*USB*
 ```
 
 <br>
