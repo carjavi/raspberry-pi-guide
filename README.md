@@ -29,7 +29,7 @@
 - [SSH Shell desde Linux](#ssh-shell-desde-linux)
   - [Mac o Windows OS](#mac-o-windows-os)
 - [Setup a Static IP Address](#setup-a-static-ip-address)
-  - [dhcpcd method](#dhcpcd-method)
+  - [ip static Rasbian dhcpcd method](#ip-static-rasbian-dhcpcd-method)
   - [Configuración de la red](#configuración-de-la-red)
 - [Adding Multiple Wireless Network Configurations](#adding-multiple-wireless-network-configurations)
   - [Otros parametros](#otros-parametros)
@@ -57,7 +57,8 @@
   - [Sample: Create A Unit File](#sample-create-a-unit-file)
   - [Configure systemd](#configure-systemd)
 - [Systemd Commands Summary (administrador del sistema y servicios)](#systemd-commands-summary-administrador-del-sistema-y-servicios)
-- [DHCP Server](#dhcp-server)
+- [Para saber que modelo de raspberry](#para-saber-que-modelo-de-raspberry)
+- [Memoria free](#memoria-free)
 - [Poner hora en la RPi desde la consola](#poner-hora-en-la-rpi-desde-la-consola)
 - [Setting LCD Touch on Raspberry](#setting-lcd-touch-on-raspberry)
   - [Setting](#setting)
@@ -290,7 +291,7 @@ If you request an IP Address within the range managed by the DHCP server which i
 
 If you want an IP Address outside the range managed by the DHCP server e.g. if you have a range of addresses reserved use the inform directive.
 
-## dhcpcd method
+## ip static Rasbian dhcpcd method 
 
 Se usa un cable de red punto a punto a la RPI, sirve para configurar la SSID y PSK en la RPI cuando no hay monitor ni teclado por ejemplo.
 
@@ -301,12 +302,32 @@ Here is an example which configures a static address, routes and dns.
 sudo nano /etc/dhcpcd.conf
 ```
 ```
-# carjavi static IP configuration:
+# carjavi static IP eth0 configuration:
 interface eth0
 static ip_address=192.168.2.2/24
 #static ip6_address=fd51:42f8:caae:d92e::ff/64
-static routers=192.168.2.0
-static domain_name_servers=192.168.2.0 8.8.8.8 
+static routers=192.168.2.1
+static domain_name_servers=192.168.2.1 8.8.8.8 
+```
+
+```
+# wlan static ip
+interface wlan0
+static ip_address=192.168.1.200/24
+static routers=192.168.1.1
+static domain_name_servers=192.168.1.1 8.8.8.8
+```
+
+Where,
+
+```interface``` = Name of the interface we want to configure <br>
+```static ip_address``` = Fixed address we want (leave the /24 at the end)
+static routers = Gateway address (router)<br>
+```static domain_name_servers``` = DNS server address (usually that of the router, or external ones like Google’s 8.8.8.8). If you want more than one DNS server, you can add them separated by a space.<br>
+
+you need:
+```
+sudo reboot
 ```
 
 > :warning: **Warning:** para conectarse a la RPI desde el computador primero se debe poner el computador en la misma red.
@@ -730,46 +751,15 @@ sudo systemctl restart <<service-name>>
 ```
 <br>
 
-# DHCP Server
+# Para saber que modelo de raspberry
 ```
-$ sudo apt-get install isc-dhcp-server
-```
-Modify the configuration in /etc/default/isc-dhcp-server
-```
-DHCPDv6_CONF=/etc/dhcp/dhcpd6.conf
-INTERFACESv6="eth0"
+cat /proc/cpuinfo | grep Models
 ```
 
-In /etc/dhcp/dhcpd6.conf you need to specify the TFTP server address and setup a subnet. Here the DHCP server is configured to supply some made up unique local addresses (ULA). The host test-rpi4 line tells DHCP to give a test device a fixed address.
+# Memoria free
 ```
-not authoritative;
-
-# Check if the client looks like a Raspberry Pi
-if option dhcp6.client-arch-type = 00:29 {
-        option dhcp6.bootfile-url "tftp://[fd49:869:6f93::1]/";
-}
-
-subnet6 fd49:869:6f93::/64 {
-        host test-rpi4 {
-                host-identifier option dhcp6.client-id 00:03:00:01:e4:5f:01:20:24:0b;
-                fixed-address6 fd49:869:6f93::1000;
-        }
-}
-
+free -m
 ```
-Your server has to be assigned the IPv6 address in /etc/dhcpcd.conf
-
-```
-interface eth0
-static ip6_address=fd49:869:6f93::1/64
-```
-
-Now start the DHCP server.
-```
-$ sudo systemctl restart isc-dhcp-server.service
-```
- revisar: https://www.raspberrypi.com/documentation/computers/remote-access.html#introduction-to-remote-access
-
 
 
 # Poner hora en la RPi desde la consola
