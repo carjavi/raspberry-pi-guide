@@ -30,8 +30,9 @@
   - [Mac o Windows OS](#mac-o-windows-os)
 - [Setup a Static IP Address](#setup-a-static-ip-address)
   - [ip static Rasbian dhcpcd method](#ip-static-rasbian-dhcpcd-method)
-  - [Configuración de la red](#configuración-de-la-red)
+  - [Conectarse a una RPi con IP estatica desde Windows](#conectarse-a-una-rpi-con-ip-estatica-desde-windows)
 - [Adding Multiple Wireless Network Configurations](#adding-multiple-wireless-network-configurations)
+  - [Tener configurado multiples Redes WiFi en RPi](#tener-configurado-multiples-redes-wifi-en-rpi)
   - [Otros parametros](#otros-parametros)
 - [Copying Files to your Raspberry Pi from SSH](#copying-files-to-your-raspberry-pi-from-ssh)
   - [Copying Files from your Raspberry Pi](#copying-files-from-your-raspberry-pi)
@@ -334,7 +335,7 @@ sudo reboot
 
 info: https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-networking-wifi-static-ip-address-on-raspbian-raspberry-pi-os/74428#74428
 
-## Configuración de la red
+## Conectarse a una RPi con IP estatica desde Windows
 
 <p align="center"><img src="./img/ip-static_1.png" height="350" alt=" " /></p>
 <p align="center"><img src="./img/ip-static_2.png" height="350" alt=" " /></p>
@@ -345,6 +346,11 @@ info: https://raspberrypi.stackexchange.com/questions/37920/how-do-i-set-up-netw
 <br>
 
 # Adding Multiple Wireless Network Configurations
+## Tener configurado multiples Redes WiFi en RPi 
+
+```
+sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
 
 Sample:
 
