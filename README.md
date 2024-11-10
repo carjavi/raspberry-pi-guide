@@ -301,6 +301,12 @@ Se usa un cable de red punto a punto a la RPI, sirve para configurar la SSID y P
 <p align="center"><img src="./img/rc3.png" height="350" alt=" " /></p>
 <p align="center"><img src="./img/rc4.png" height="350" alt=" " /></p>
 
+After installing, you might need to reboot your Raspberry Pi for the changes to take effect: 
+```
+sudo reboot
+```
+
+<br>
 
 ### Install from CONSOLE
 ```
