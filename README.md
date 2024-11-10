@@ -34,6 +34,7 @@
     - [Enable Network Manager/ Start Network Manager/ Verify the Status](#enable-network-manager-start-network-manager-verify-the-status)
     - [(Optional) Disable the Default dhcpcd Service](#optional-disable-the-default-dhcpcd-service)
     - [Run](#run)
+    - [Going back to non static IP](#going-back-to-non-static-ip)
   - [ip static Rasbian dhcpcd method](#ip-static-rasbian-dhcpcd-method)
   - [Conectarse a una RPi con IP estatica en Eth0 desde Windows](#conectarse-a-una-rpi-con-ip-estatica-en-eth0-desde-windows)
 - [Adding Multiple Wireless Network Configurations](#adding-multiple-wireless-network-configurations)
@@ -335,6 +336,8 @@ sudo nmtui
 
 Restart your Pi for the changes to take effect. You have successfully set up static IP on Raspberry Pi.
 
+### Going back to non static IP
+How? Simply edit the network connection in question again. This time, change the IPv4 configuration to 'automatic' and save your changes. And that's it. You don't have to provide IP address, gateway IP etc anymore
 
 
 <br>
