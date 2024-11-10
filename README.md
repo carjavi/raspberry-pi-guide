@@ -29,6 +29,11 @@
 - [SSH Shell desde Linux](#ssh-shell-desde-linux)
   - [Mac o Windows OS](#mac-o-windows-os)
 - [Setup a Static IP Address](#setup-a-static-ip-address)
+  - [Terminal Method](#terminal-method)
+    - [Install](#install)
+    - [Enable Network Manager/ Start Network Manager/ Verify the Status](#enable-network-manager-start-network-manager-verify-the-status)
+    - [(Optional) Disable the Default dhcpcd Service](#optional-disable-the-default-dhcpcd-service)
+    - [Run](#run)
   - [ip static Rasbian dhcpcd method](#ip-static-rasbian-dhcpcd-method)
   - [Conectarse a una RPi con IP estatica en Eth0 desde Windows](#conectarse-a-una-rpi-con-ip-estatica-en-eth0-desde-windows)
 - [Adding Multiple Wireless Network Configurations](#adding-multiple-wireless-network-configurations)
@@ -275,10 +280,67 @@ Next you will be prompted for the password for the pi login: the default passwor
 
 <br>
 
+<br>
+
 # Setup a Static IP Address
-## ip static Rasbian dhcpcd method 
+## Terminal Method
 
 Se usa un cable de red punto a punto a la RPI, sirve para configurar la SSID y PSK en la RPI cuando no hay monitor ni teclado por ejemplo.
+
+***Opcion 1 with Network Manager in Terminal Tool (nmtui)*** <br>
+
+
+> [!WARNING]
+> If your system doesn't have nmtui package installed, you may install it. (con sistema BOOKWORM no require instalacion)
+
+### Install
+```
+sudo apt update && sudo apt install network-manager
+```
+
+### Enable Network Manager/ Start Network Manager/ Verify the Status
+```
+sudo systemctl enable NetworkManager
+sudo systemctl start NetworkManager
+sudo systemctl status NetworkManager
+```
+
+### (Optional) Disable the Default dhcpcd Service
+Raspberry Pi OS uses dhcpcd by default for network management. You may want to disable it to prevent conflicts with Network Manager:
+```
+sudo systemctl disable dhcpcd && sudo systemctl stop dhcpcd
+```
+
+After installing, you might need to reboot your Raspberry Pi for the changes to take effect: 
+```
+sudo reboot
+```
+
+<br>
+
+### Run 
+```
+sudo nmtui
+```
+
+<p align="center"><img src="./img/nm1.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm2.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm3.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm4.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm5.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm6.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm7.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/nm8.png" height="350" alt=" " /></p>
+
+
+Restart your Pi for the changes to take effect. You have successfully set up static IP on Raspberry Pi.
+
+
+
+<br>
+
+***Option 2***
+## ip static Rasbian dhcpcd method 
 
 > :bulb: **Tip:** hay acceso a internet desde la ip ```Ethernet``` y si desde la ip ```WiFi``` siempre que este configurada la red Wifi. Sino hay que reload el adaptador de red.
 
