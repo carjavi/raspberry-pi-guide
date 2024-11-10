@@ -30,7 +30,8 @@
   - [Mac o Windows OS](#mac-o-windows-os)
 - [Setup a Static IP Address](#setup-a-static-ip-address)
   - [Terminal Method](#terminal-method)
-    - [Install](#install)
+    - [Install from RASPI-CONFIG](#install-from-raspi-config)
+    - [Install from CONSOLE](#install-from-console)
     - [Enable Network Manager/ Start Network Manager/ Verify the Status](#enable-network-manager-start-network-manager-verify-the-status)
     - [(Optional) Disable the Default dhcpcd Service](#optional-disable-the-default-dhcpcd-service)
     - [Run](#run)
@@ -290,11 +291,18 @@ Se usa un cable de red punto a punto a la RPI, sirve para configurar la SSID y P
 
 ***Opcion 1 with Network Manager in Terminal Tool (nmtui)*** <br>
 
-
 > [!WARNING]
 > If your system doesn't have nmtui package installed, you may install it. (con sistema BOOKWORM no require instalacion)
 
-### Install
+### Install from RASPI-CONFIG
+
+<p align="center"><img src="./img/rc1.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/rc2.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/rc3.png" height="350" alt=" " /></p>
+<p align="center"><img src="./img/rc4.png" height="350" alt=" " /></p>
+
+
+### Install from CONSOLE
 ```
 sudo apt update && sudo apt install network-manager
 ```
